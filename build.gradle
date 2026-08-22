@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.graalvm.buildtools.native' version '0.10.1'
+}
+
+//rootProject.name = 'SaveTree'
+version = '0.1'
+
+// Set source and output directories
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+        // java.destinationDirectory = file('bin')
+        // java.destinationDirectory = file('classes')
+    }
+}
+
+// Java Toolchain Target
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+// Enable --enable-preview for Java Compilation
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['--enable-preview']
+}
+
+// Enable --enable-preview when running via `gradle run`
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += ['--enable-preview']
+    standardInput = System.in
+    outputs.upToDateWhen { false }
+}
+
+// Enable --enable-preview during unit tests
+tasks.withType(Test).configureEach {
+    jvmArgs += ['--enable-preview']
+}
+
+// Main class entry point (Synthetic class generated for src/Main.java)
+application {
+    mainClass = 'Main'
+}
+
+// GraalVM Native Image Configuration
+graalvmNative {
+    toolchainDetection = false
+    binaries {
+        main {
+            imageName = 'SaveTree'
+            mainClass = 'Main'
+            buildArgs.add('--enable-preview')
+        }
+    }
+}
