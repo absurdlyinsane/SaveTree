@@ -1,30 +1,6 @@
 import Entities.Structures.CQueue;
 import Entities.Structures.Node;
 
-// public class Tree{
-//     private Node root;
-
-//     public Tree(Node root){
-//         this.root = root;
-//     }
-
-//     public void setRoot(Node root){ this.root = root; }
-
-//     public Node getRoot(){ return root; }
-
-//     // public Node searchTravarse(){
-//     //     Node result;
-//     //     int[] queue;
-//     //     int[] visited;
-
-//     //     whileif(!(queue == null)){
-            
-//     //     }
-
-//     //     return result;
-//     // }
-// }
-
 void main(){
     Node n1 = new Node(2);
     Node n2 = new Node(4);
