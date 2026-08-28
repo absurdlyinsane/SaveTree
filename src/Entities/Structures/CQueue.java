@@ -20,6 +20,20 @@ public class CQueue{
 
     public int getRear(){ return rear; }
 
+    public Node getFrontNode(){
+        if(isEmpty() || front < 0){
+            return null;
+        }
+        return mainQ[front];
+    }
+
+    public Node getRearNode(){
+        if(isEmpty() || rear < 0){
+            return null;
+        }
+        return mainQ[rear];
+    }
+
     public boolean isEmpty(){
         boolean empty1 = true;
         boolean empty2 = (front == -1);
@@ -84,9 +98,18 @@ public class CQueue{
         }
     }
 
+    public void wipeQ(){
+        if(isEmpty()){
+            IO.println("The queue is empty!");
+        } else{
+            for(int i=0;i<capacity;i++){
+                mainQ[i] = null;
+            }
+        }
+    }
+
     public String printQ(){
         String output = "";
-        
         if(isEmpty()){
             output = "Queue is empty.";
         } else{
@@ -94,7 +117,6 @@ public class CQueue{
                 output += (mainQ[i].getValue()+"  ");
             }
         }
-
         return output;
     }
 
