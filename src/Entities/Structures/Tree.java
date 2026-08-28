@@ -9,35 +9,31 @@ public class Tree{
 
     public Node getRoot(){ return root; }
 
-    public Node searchTravarseBFS(int value){
+    public Node searchTraverseBFS(int value){
         if (root == null) {
             IO.println("Value not found. There is not root.");
             return null;
         }
         
-        Node result = null;
         Node current = null;
-        CQueue tQueue = null;
-        CQueue pQueue = null;
+        CQueue tQueue = new CQueue();
 
         tQueue.enQ(root);
 
         while(!tQueue.isEmpty()){
             current = tQueue.getFrontNode();
             if(current.getValue() == value){
-                result = current;
-                break;
-            } else{
-                tQueue.deQ();
-                for(int i=0;i<current.getNumofChildren();i++){
-                    Node[] temp = current.getChildren();
-                    tQueue.enQ(temp[i]);
-                }
-                pQueue.enQ(current);
+                return current;
+            }
+
+            tQueue.deQ();
+            Node[] temp = current.getChildren();
+            for(int i=0;i<current.getNumofChildren();i++){
+                tQueue.enQ(temp[i]);
             }
         }
 
         IO.println("Value not found.");
-        return result;
+        return null;
     }
 }
