@@ -7,19 +7,37 @@ public class Tree{
         this.root = root;
     }
 
-    public void setRoot(Node root){ this.root = root; }
-
     public Node getRoot(){ return root; }
 
-    // public Node searchTravarse(){
-    //     Node result;
-    //     int[] queue;
-    //     int[] visited;
+    public Node searchTravarseBFS(int value){
+        if (root == null) {
+            IO.println("Value not found. There is not root.");
+            return null;
+        }
+        
+        Node result = null;
+        Node current = null;
+        CQueue tQueue = null;
+        CQueue pQueue = null;
 
-    //     whileif(!(queue == null)){
-            
-    //     }
+        tQueue.enQ(root);
 
-    //     return result;
-    // }
+        while(!tQueue.isEmpty()){
+            current = tQueue.getFrontNode();
+            if(current.getValue() == value){
+                result = current;
+                break;
+            } else{
+                tQueue.deQ();
+                for(int i=0;i<current.getNumofChildren();i++){
+                    Node[] temp = current.getChildren();
+                    tQueue.enQ(temp[i]);
+                }
+                pQueue.enQ(current);
+            }
+        }
+
+        IO.println("Value not found.");
+        return result;
+    }
 }

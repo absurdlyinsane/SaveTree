@@ -13,7 +13,6 @@ public record Save(int index, String comment, Instant lastModified){
         if(comment != null && comment.length() > 128){
             throw new IllegalArgumentException("Comment exceeds maximum length of 128 characters");
         }
-        
         comment = (comment != null) ? comment.strip() : null;
     }
 
