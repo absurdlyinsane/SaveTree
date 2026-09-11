@@ -5,3 +5,10 @@ A local save backup utility for games. SaveTree can not only keep a flat list of
 
 > ## ⚠️ Work in progress
 > This project is still being built and unfinished.
+
+## Build Requirements
+- Gradle (>= 9.7.1)
+- JDK (>= 25.0.4)
+- Enable preview for `javac` & `java`
+
+Although, you can use any Java compiler for this project, the Gradle file is configured to use with GraalVM.
