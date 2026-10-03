@@ -30,5 +30,7 @@ public class Node{
 
     public Node getParent(){ return parent; }
 
+    public int getNumofChildren(){ return children.size(); }
+
     public List<Node> getChildren(){ return children; }
 };
