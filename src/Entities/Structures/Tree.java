@@ -1,7 +1,10 @@
 package Entities.Structures;
 
+import java.util.List;
+import Entities.Save;
+
 public class Tree{
-    private Node root;
+    private final Node root;
 
     public Tree(Node root){
         this.root = root;
@@ -9,27 +12,24 @@ public class Tree{
 
     public Node getRoot(){ return root; }
 
-    public Node searchTraverseBFS(int value){
-        if (root == null) {
-            IO.println("Value not found. There is not root.");
+    public Node searchTraverseBFS(String value){
+        if(root == null){
+            IO.println("Value not found. There is no root.");
             return null;
         }
-        
-        Node current = null;
-        CQueue tQueue = new CQueue(value);
 
+        CQueue tQueue = new CQueue(256);   // some capacity; see note below
         tQueue.enQ(root);
 
         while(!tQueue.isEmpty()){
-            current = tQueue.getFrontNode();
-            if(current.getValue().index() == value){
+            Node current = tQueue.deQ();
+
+            if(current.getValue().index().equals(value)){
                 return current;
             }
 
-            tQueue.deQ();
-            Node[] temp = current.getChildren();
-            for(int i=0;i<current.getNumofChildren();i++){
-                tQueue.enQ(temp[i]);
+            for(Node child : current.getChildren()){
+                tQueue.enQ(child);
             }
         }
 
@@ -42,6 +42,6 @@ public class Tree{
             IO.println("Value not found. There is not root.");
         }
         
-        
+        // TO BE IMPLEMENTED.
     }
 }
