@@ -1,14 +1,16 @@
 package Entities;
 
+import Entities.Structures.*;
+
 public class Playthrough{
     private int index;
     private String name;
-    private Save[] saveList;
+    private Tree saveTree;
 
-    public Playthrough(int index,String name,Save[] saveList){
+    public Playthrough(int index,String name,Tree saveTree){
         this.index = index;
         this.name = name;
-        this.saveList = saveList;
+        this.saveTree = saveTree;
     }
 
     public void setName(String name){ this.name = name; }
@@ -17,5 +19,5 @@ public class Playthrough{
 
     public String getName(){ return name; }
 
-    public Save[] getSaveList() { return saveList; }
+    public Tree getSaveTree(){ return saveTree; }
 }
