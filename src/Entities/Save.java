@@ -19,4 +19,6 @@ public record Save(String index, String comment, Instant lastModified){
     public Save(String index, Instant lastModified) {
         this(index, null, lastModified);
     }
+
+    public String getIndex(){ return index; }
 }
