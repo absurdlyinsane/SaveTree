@@ -9,7 +9,7 @@ void main(){
         IO.println();
         IO.println();
         
-        int key = readInt("--> ");
+        int key = Functions.readInt("--> ");
         if(key == 0) break;
 
         switch(key){
