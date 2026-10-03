@@ -1,26 +1,28 @@
 package Entities.Structures;
 
+import Entities.Save;
+
 public class Node{
-    private int value;
+    private Save value;
     private Node parent;
     private int numofChildren;
     private Node[] children;
 
-    public Node(int value,int numofChildren){
+    public Node(Save value,int numofChildren){
         this.value = value;
         this.numofChildren = numofChildren;
         this.parent = null;
         this.children = null;
     }
 
-    public Node(int value,int numofChildren,Node parent){
+    public Node(Save value,int numofChildren,Node parent){
         this.value = value;
         this.numofChildren = numofChildren;
         this.parent = parent;
         this.children = null;
     }
 
-    public void setValue(int value){ this.value = value; }
+    public void setValue(Save value){ this.value = value; }
 
     public void setParent(Node parent){ this.parent = parent; }
 
@@ -28,7 +30,7 @@ public class Node{
     
     public void setChildren(Node[] children){ this.children = children; }
 
-    public int getValue(){ return value; }
+    public Save getValue(){ return value; }
 
     public int getNumofChildren() { return numofChildren; }
 
