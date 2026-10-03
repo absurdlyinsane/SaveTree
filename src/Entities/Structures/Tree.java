@@ -16,13 +16,13 @@ public class Tree{
         }
         
         Node current = null;
-        CQueue tQueue = new CQueue();
+        CQueue tQueue = new CQueue(value);
 
         tQueue.enQ(root);
 
         while(!tQueue.isEmpty()){
             current = tQueue.getFrontNode();
-            if(current.getValue() == value){
+            if(current.getValue().index() == value){
                 return current;
             }
 
@@ -35,5 +35,13 @@ public class Tree{
 
         IO.println("Value not found.");
         return null;
+    }
+
+    public void printTree(){
+        if (root == null) {
+            IO.println("Value not found. There is not root.");
+        }
+        
+        
     }
 }
